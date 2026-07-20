@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create an Account — LUDOVICE Kitchen &amp; Table</title>
+<link rel="icon" href="img/mylogo.jpg">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav__row">
+    <a href="index.html" class="nav__brand">
+      <img src="img/mylogo.jpg" alt="LUDOVICE logo">
+      <span class="nav__brand-text"><b>LUDOVICE</b><span>Kitchen &amp; Table</span></span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="products.html">Menu</a>
+      <a href="contact.html">Contact</a>
+      <a href="orders.html">My Orders</a>
+      <a href="login.html">Login</a>
+    </nav>
+    <div class="nav__actions">
+      <a href="cart.html" class="nav__cart" aria-label="View cart">🛒<span class="nav__cart-count" data-cart-count>0</span></a>
+      <button class="nav__toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<section class="section" style="padding:70px 0;">
+  <div class="container" style="max-width:1080px;">
+    <div class="form-split">
+
+      <aside class="form-split__aside">
+        <p class="eyebrow" style="color:var(--gold-light);">Join LUDOVICE</p>
+        <h2 style="color:#fff;position:relative;z-index:1;">Your table is<br>always open.</h2>
+        <p style="color:var(--slate-light);margin-top:16px;position:relative;z-index:1;">Create an account to save your delivery address, track past orders, and get first access to new Chef's Specials every week.</p>
+        <div class="plate-frame" style="width:190px;margin-top:36px;position:relative;z-index:1;">
+          <div class="plate-frame__inner"><img src="img/bestpick.png.jpg" alt="Signature platter"></div>
+        </div>
+
+        <p class="eyebrow" style="color:var(--gold-light);margin-top:36px;position:relative;z-index:1;">Follow our journey</p>
+        <div class="icon-row" style="margin-top:12px;position:relative;z-index:1;">
+          <a class="icon-link" href="https://www.facebook.com/gimmmyyy" target="_blank" rel="noopener" aria-label="LUDOVICE on Facebook" title="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a class="icon-link" href="https://github.com/gimmmyyy" target="_blank" rel="noopener" aria-label="LUDOVICE on GitHub" title="GitHub">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.54 2.87 8.39 6.84 9.75.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.51-3.5-.7-3.72-1.34-.13-.34-.68-1.34-1.16-1.61-.4-.22-.97-.76-.01-.77.9-.01 1.54.85 1.76 1.2 1.03 1.75 2.68 1.26 3.33.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.31-5.23-5.82 0-1.28.45-2.34 1.2-3.16-.12-.3-.52-1.53.11-3.18 0 0 .98-.32 3.2 1.2a10.9 10.9 0 015.83 0c2.22-1.53 3.2-1.2 3.2-1.2.63 1.65.23 2.88.11 3.18.75.82 1.2 1.87 1.2 3.16 0 4.52-2.69 5.53-5.25 5.82.41.36.77 1.08.77 2.18 0 1.58-.01 2.85-.01 3.24 0 .27.18.6.69.49A10.02 10.02 0 0022 12.26C22 6.58 17.52 2 12 2z"/></svg>
+          </a>
+          <a class="icon-link" href="mailto:gimbertludovice@student.trimex.colleges.edu.ph" aria-label="Email LUDOVICE" title="Gmail">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21.35 11.1h-9.17v2.98h5.27c-.23 1.47-1.68 4.32-5.27 4.32-3.17 0-5.76-2.62-5.76-5.85s2.59-5.85 5.76-5.85c1.8 0 3.01.77 3.7 1.43l2.52-2.43C16.96 3.99 14.83 3 12.18 3 6.98 3 2.77 7.2 2.77 12.4s4.21 9.4 9.41 9.4c5.43 0 9.03-3.81 9.03-9.18 0-.62-.07-1.09-.15-1.52z"/></svg>
+          </a>
+        </div>
+      </aside>
+
+      <div class="form-split__main">
+        <h2>Create your account</h2>
+        <p style="margin-bottom:28px;">It only takes a minute.</p>
+
+        <form id="register-form" novalidate>
+          <div class="field">
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" name="fullname" placeholder="Juan Dela Cruz" required minlength="2">
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="birthday">Birthday</label>
+              <input type="date" id="birthday" name="birthday" required>
+            </div>
+            <div class="field">
+              <label for="gender">Gender</label>
+              <select id="gender" name="gender" required>
+                <option value="" disabled selected>Select one</option>
+                <option>Female</option>
+                <option>Male</option>
+                <option>Non-binary</option>
+                <option>Prefer not to say</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="address">Address</label>
+            <input type="text" id="address" name="address" placeholder="Unit, street, barangay, city" required minlength="5">
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="my@email.com" required>
+            </div>
+            <div class="field">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="09XX XXX XXXX" pattern="[0-9+ ]{7,14}" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Pick a username" required minlength="4">
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" placeholder="At least 8 characters" required minlength="8">
+            </div>
+            <div class="field">
+              <label for="confirm">Confirm Password</label>
+              <input type="password" id="confirm" name="confirm" placeholder="Re-enter password" required minlength="8">
+            </div>
+          </div>
+          <p id="match-hint" class="hint" style="color:var(--alert);font-size:.8rem;display:none;margin:-14px 0 18px;">Passwords do not match.</p>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Create Account</button>
+            <button type="reset" class="btn btn-outline">Reset</button>
+          </div>
+          <p style="margin-top:20px;font-size:.9rem;">Already have an account? <a href="login.html" style="color:var(--orange);font-weight:700;">Log in</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer" style="padding-top:40px;">
+  <div class="container">
+    <div class="footer__bottom" style="border-top:1px solid var(--ink-line);padding-top:24px;">
+      <span>© <span data-year></span> LUDOVICE Kitchen &amp; Table.</span>
+      <span><a href="about.html">About</a> · <a href="contact.html">Contact</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="data/main_professional.js"></script>
+<script src="js/register.js"></script>
+</body>
+</html>

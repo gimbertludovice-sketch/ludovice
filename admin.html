@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Owner Dashboard — LUDOVICE Kitchen &amp; Table</title>
+<link rel="icon" href="img/mylogo.jpg">
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav__row">
+    <a href="index.html" class="nav__brand">
+      <img src="img/mylogo.jpg" alt="LUDOVICE logo">
+      <span class="nav__brand-text"><b>LUDOVICE</b><span>Kitchen &amp; Table</span></span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="products.html">Menu</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Login</a>
+    </nav>
+    <div class="nav__actions">
+      <a href="cart.html" class="nav__cart" aria-label="View cart">🛒<span class="nav__cart-count" data-cart-count>0</span></a>
+      <button class="nav__toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<section class="page-header">
+  <div class="container">
+    <p class="eyebrow">Owner Only</p>
+    <h1 style="color:#fff;">Customer Dashboard</h1>
+    <p class="breadcrumb"><a href="index.html">Home</a> / Owner Dashboard</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="card" style="padding:24px;margin-bottom:32px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;">
+      <div>
+        <h3 style="margin-bottom:6px;">Sign-up &amp; login activity</h3>
+        <p style="margin:0;color:var(--slate);font-size:.9rem;">Every account created and every login on this device, ready to export.</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <button class="btn btn-primary" id="export-btn">⬇ Export to Excel (.xlsx)</button>
+        <button class="btn btn-outline" id="refresh-btn">↻ Refresh</button>
+      </div>
+    </div>
+
+    <div class="grid grid--3" style="margin-bottom:40px;">
+      <div class="card" style="padding:24px;">
+        <span class="eyebrow">Registered Users</span>
+        <p class="price" style="font-size:2.2rem;margin-top:8px;" id="stat-users">0</p>
+      </div>
+      <div class="card" style="padding:24px;">
+        <span class="eyebrow">Logins Recorded</span>
+        <p class="price" style="font-size:2.2rem;margin-top:8px;" id="stat-logins">0</p>
+      </div>
+      <div class="card" style="padding:24px;">
+        <span class="eyebrow">Orders Placed</span>
+        <p class="price" style="font-size:2.2rem;margin-top:8px;" id="stat-orders">0</p>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom:16px;">Registered Users</h3>
+    <div class="card" style="overflow-x:auto;padding:0;margin-bottom:40px;">
+      <table style="width:100%;border-collapse:collapse;font-size:.88rem;" id="users-table">
+        <thead>
+          <tr style="background:var(--cream);text-align:left;">
+            <th style="padding:12px 16px;">Username</th>
+            <th style="padding:12px 16px;">Full Name</th>
+            <th style="padding:12px 16px;">Email</th>
+            <th style="padding:12px 16px;">Phone</th>
+            <th style="padding:12px 16px;">Joined</th>
+          </tr>
+        </thead>
+        <tbody id="users-body"></tbody>
+      </table>
+      <p id="users-empty" style="padding:24px;color:var(--slate);display:none;">No registered users yet — accounts created via the Register page will show up here.</p>
+    </div>
+
+    <h3 style="margin-bottom:16px;">Activity Log</h3>
+    <div class="card" style="overflow-x:auto;padding:0;">
+      <table style="width:100%;border-collapse:collapse;font-size:.88rem;" id="log-table">
+        <thead>
+          <tr style="background:var(--cream);text-align:left;">
+            <th style="padding:12px 16px;">Event</th>
+            <th style="padding:12px 16px;">Username</th>
+            <th style="padding:12px 16px;">Email</th>
+            <th style="padding:12px 16px;">Timestamp</th>
+          </tr>
+        </thead>
+        <tbody id="log-body"></tbody>
+      </table>
+      <p id="log-empty" style="padding:24px;color:var(--slate);display:none;">No activity recorded yet.</p>
+    </div>
+
+    <p style="margin-top:24px;font-size:.8rem;color:var(--slate-light);">Data is stored locally in this browser's storage (no server / no real database) — export regularly if you need to keep records.</p>
+  </div>
+</section>
+
+<footer class="footer" style="padding-top:40px;">
+  <div class="container">
+    <div class="footer__bottom" style="border-top:1px solid var(--ink-line);padding-top:24px;">
+      <span>© <span data-year></span> LUDOVICE Kitchen &amp; Table.</span>
+      <span><a href="about.html">About</a> · <a href="contact.html">Contact</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="data/main_professional.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  function render() {
+    const users = Auth.getAllUsers();
+    const log = Auth.getActivityLog();
+    const orders = Orders.getAll();
+
+    document.getElementById('stat-users').textContent = users.length;
+    document.getElementById('stat-logins').textContent = log.filter(e => e.event === 'login').length;
+    document.getElementById('stat-orders').textContent = orders.length;
+
+    const usersBody = document.getElementById('users-body');
+    document.getElementById('users-empty').style.display = users.length ? 'none' : 'block';
+    usersBody.innerHTML = users.map(u => `
+      <tr style="border-top:1px solid var(--ink-line);">
+        <td style="padding:12px 16px;font-family:var(--f-mono);">${u.username}</td>
+        <td style="padding:12px 16px;">${u.fullname}</td>
+        <td style="padding:12px 16px;">${u.email}</td>
+        <td style="padding:12px 16px;">${u.phone || '—'}</td>
+        <td style="padding:12px 16px;">${formatDate(u.createdAt, 'short')}</td>
+      </tr>`).join('');
+
+    const logBody = document.getElementById('log-body');
+    document.getElementById('log-empty').style.display = log.length ? 'none' : 'block';
+    logBody.innerHTML = [...log].reverse().map(e => `
+      <tr style="border-top:1px solid var(--ink-line);">
+        <td style="padding:12px 16px;">
+          <span class="badge-soft" style="text-transform:capitalize;${e.event === 'register' ? '' : 'background:rgba(16,185,129,.12);color:var(--success);border-color:rgba(16,185,129,.3);'}">${e.event}</span>
+        </td>
+        <td style="padding:12px 16px;font-family:var(--f-mono);">${e.username}</td>
+        <td style="padding:12px 16px;">${e.email}</td>
+        <td style="padding:12px 16px;">${new Date(e.timestamp).toLocaleString('en-PH')}</td>
+      </tr>`).join('');
+  }
+
+  document.getElementById('refresh-btn').addEventListener('click', render);
+
+  document.getElementById('export-btn').addEventListener('click', () => {
+    const users = Auth.getAllUsers().map(u => ({
+      Username: u.username,
+      'Full Name': u.fullname,
+      Email: u.email,
+      Phone: u.phone || '',
+      Address: u.address || '',
+      'Joined At': u.createdAt
+    }));
+    const log = Auth.getActivityLog().map(e => ({
+      Event: e.event,
+      Username: e.username,
+      'Full Name': e.fullname,
+      Email: e.email,
+      Timestamp: e.timestamp
+    }));
+
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(users), 'Users');
+    XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(log), 'Activity Log');
+
+    const stamp = new Date().toISOString().slice(0, 10);
+    XLSX.writeFile(wb, `ludovice-users-${stamp}.xlsx`);
+    toast('Excel file downloaded.');
+  });
+
+  render();
+});
+</script>
+</body>
+</html>

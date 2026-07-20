@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Account — LUDOVICE Kitchen &amp; Table</title>
+<link rel="icon" href="img/mylogo.jpg">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav__row">
+    <a href="index.html" class="nav__brand">
+      <img src="img/mylogo.jpg" alt="LUDOVICE logo">
+      <span class="nav__brand-text"><b>LUDOVICE</b><span>Kitchen &amp; Table</span></span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="products.html">Menu</a>
+      <a href="contact.html">Contact</a>
+      <a href="orders.html" class="active">My Orders</a>
+    </nav>
+    <div class="nav__actions">
+      <a href="cart.html" class="nav__cart" aria-label="View cart">🛒<span class="nav__cart-count" data-cart-count>0</span></a>
+      <button class="nav__toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<section class="page-header">
+  <div class="container">
+    <p class="eyebrow">Your Account</p>
+    <h1 style="color:#fff;">Order History</h1>
+    <p class="breadcrumb"><a href="index.html">Home</a> / My Orders</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div id="guest-state" style="display:none;text-align:center;padding:40px 0 70px;">
+      <p style="font-size:3rem;">🔒</p>
+      <h2>Log in to see your orders</h2>
+      <p style="margin:12px 0 26px;">Create an account or log in to track everything you've ordered from LUDOVICE.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+        <a href="login.html" class="btn btn-primary">Log In</a>
+        <a href="register.html" class="btn btn-outline">Create Account</a>
+      </div>
+    </div>
+
+    <div id="account-state" style="display:none;">
+      <div class="card" style="padding:24px 28px;margin-bottom:32px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;">
+        <div>
+          <span class="eyebrow">Welcome back</span>
+          <h3 id="account-name" style="margin-top:4px;"></h3>
+        </div>
+        <button class="btn btn-outline" id="logout-btn">Log Out</button>
+      </div>
+
+      <div id="orders-empty" style="display:none;text-align:center;padding:60px 0;">
+        <p style="font-size:3rem;">🍽️</p>
+        <h2>No orders yet</h2>
+        <p style="margin:12px 0 26px;">Once you place an order it'll show up here.</p>
+        <a href="products.html" class="btn btn-primary">Browse the Menu</a>
+      </div>
+
+      <div id="orders-list"></div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer" style="padding-top:40px;">
+  <div class="container">
+    <div class="footer__bottom" style="border-top:1px solid var(--ink-line);padding-top:24px;">
+      <span>© <span data-year></span> LUDOVICE Kitchen &amp; Table.</span>
+      <span><a href="about.html">About</a> · <a href="contact.html">Contact</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="data/main_professional.js"></script>
+<script src="js/orders.js"></script>
+</body>
+</html>

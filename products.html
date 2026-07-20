@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Full Menu — 600 Dishes | LUDOVICE Kitchen &amp; Table</title>
+<link rel="icon" href="img/mylogo.jpg">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav__row">
+    <a href="index.html" class="nav__brand">
+      <img src="img/mylogo.jpg" alt="LUDOVICE logo">
+      <span class="nav__brand-text"><b>LUDOVICE</b><span>Kitchen &amp; Table</span></span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="products.html" class="active">Menu</a>
+      <a href="contact.html">Contact</a>
+      <a href="orders.html">My Orders</a>
+      <a href="login.html">Login</a>
+    </nav>
+    <div class="nav__actions">
+      <a href="cart.html" class="nav__cart" aria-label="View cart">🛒<span class="nav__cart-count" data-cart-count>0</span></a>
+      <a href="register.html" class="btn btn-primary btn-sm">Order Now</a>
+      <button class="nav__toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<section class="page-header">
+  <div class="container">
+    <p class="eyebrow">The Full Menu</p>
+    <h1 style="color:#fff;">600 dishes. Six categories. One kitchen.</h1>
+    <p class="breadcrumb"><a href="index.html">Home</a> / Menu</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:56px;">
+  <div class="container">
+
+    <div class="filter-bar">
+      <div class="filter-bar__search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.6" y2="16.6"/></svg>
+        <input type="search" id="search-input" placeholder="Search 600 dishes — try 'sisig' or 'wagyu'">
+      </div>
+      <div class="filter-chips" id="filter-chips">
+        <button class="chip active" data-cat="all">All</button>
+        <button class="chip" data-cat="appetizers">Appetizers</button>
+        <button class="chip" data-cat="mains">Main Courses</button>
+        <button class="chip" data-cat="sides">Sides</button>
+        <button class="chip" data-cat="desserts">Desserts</button>
+        <button class="chip" data-cat="drinks">Drinks</button>
+        <button class="chip" data-cat="specials">Chef's Specials</button>
+      </div>
+      <div class="filter-bar__sort">
+        <select id="sort-select">
+          <option value="default">Sort: Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="rating">Highest Rated</option>
+          <option value="name">Name: A–Z</option>
+        </select>
+      </div>
+    </div>
+
+    <p class="results-meta" id="results-meta">Loading catalog…</p>
+
+    <div class="grid grid--4" id="product-grid"></div>
+
+    <div class="load-more-wrap">
+      <button class="btn btn-outline" id="load-more-btn">Load More Dishes</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRODUCT DETAIL MODAL ============ -->
+<div id="product-modal" style="display:none;position:fixed;inset:0;z-index:3000;background:rgba(10,14,39,.75);align-items:center;justify-content:center;padding:20px;">
+  <div style="background:#fff;border-radius:var(--radius-lg);max-width:640px;width:100%;overflow:hidden;box-shadow:var(--shadow-lg);position:relative;">
+    <button id="modal-close" aria-label="Close" style="position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;background:#fff;border:1px solid var(--border);font-size:1.1rem;z-index:2;">✕</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand"><img src="img/mylogo.jpg" alt="LUDOVICE logo"><b>LUDOVICE</b></div>
+        <p>Premium Filipino fusion kitchen serving Metro Manila since 2019.</p>
+        <div class="footer__social"><a href="https://www.facebook.com/gimmmyyy" target="_blank" rel="noopener" aria-label="Facebook">f</a><a href="https://github.com/gimmmyyy" target="_blank" rel="noopener" aria-label="GitHub">gh</a><a href="mailto:gimbertludovice@student.trimex.colleges.edu.ph" aria-label="Email">@</a></div>
+      </div>
+      <div><h4>Shop</h4><ul><li><a href="products.html">Full Menu</a></li><li><a href="cart.html">Your Cart</a></li><li><a href="checkout.html">Checkout</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="login.html">Login</a></li><li><a href="admin.html">Owner Dashboard</a></li></ul></div>
+          <div><h4>Visit Us</h4><ul><li>Doña Aurora St, Malamig, Biñan City, Laguna</li><li>gimbertludovice@student.trimex.colleges.edu.ph</li><li>(63) 954 361 8684</li></ul></div>
+        </div>
+    <div class="footer__bottom"><span>© <span data-year></span> LUDOVICE Kitchen &amp; Table.</span><span>Made with 🍚 in the Philippines</span></div>
+  </div>
+</footer>
+
+<script src="data/products.js"></script>
+<script src="data/main_professional.js"></script>
+<script src="js/catalog.js"></script>
+</body>
+</html>

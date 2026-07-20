@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout — LUDOVICE Kitchen &amp; Table</title>
+<link rel="icon" href="img/mylogo.jpg">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav__row">
+    <a href="index.html" class="nav__brand">
+      <img src="img/mylogo.jpg" alt="LUDOVICE logo">
+      <span class="nav__brand-text"><b>LUDOVICE</b><span>Kitchen &amp; Table</span></span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="products.html">Menu</a>
+      <a href="contact.html">Contact</a>
+      <a href="orders.html">My Orders</a>
+      <a href="login.html">Login</a>
+    </nav>
+    <div class="nav__actions">
+      <a href="cart.html" class="nav__cart" aria-label="View cart">🛒<span class="nav__cart-count" data-cart-count>0</span></a>
+      <button class="nav__toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<section class="page-header">
+  <div class="container">
+    <p class="eyebrow">Step 2 of 2</p>
+    <h1 style="color:#fff;">Checkout</h1>
+    <p class="breadcrumb"><a href="index.html">Home</a> / <a href="cart.html">Cart</a> / Checkout</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="stepper">
+      <div class="stepper__step"><span class="stepper__num">1</span><span>Cart</span></div>
+      <div class="stepper__line"></div>
+      <div class="stepper__step active"><span class="stepper__num">2</span><span>Checkout</span></div>
+      <div class="stepper__line"></div>
+      <div class="stepper__step"><span class="stepper__num">3</span><span>Confirmation</span></div>
+    </div>
+
+    <form id="checkout-form" novalidate>
+    <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:40px;align-items:start;">
+      <div>
+        <!-- Customer Information -->
+        <div class="form-card" style="margin-bottom:30px;">
+          <h3 style="margin-bottom:20px;">Customer Information</h3>
+          <div class="field">
+            <label for="co-name">Full Name</label>
+            <input type="text" id="co-name" required minlength="2">
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="co-email">Email</label>
+              <input type="email" id="co-email" required>
+            </div>
+            <div class="field">
+              <label for="co-phone">Phone Number</label>
+              <input type="tel" id="co-phone" pattern="[0-9+ ]{7,14}" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="co-address">Delivery Address</label>
+            <input type="text" id="co-address" placeholder="Unit, street, barangay, city" required minlength="5">
+          </div>
+        </div>
+
+        <!-- Order Information -->
+        <div class="form-card" style="margin-bottom:30px;">
+          <h3 style="margin-bottom:20px;">Order Information</h3>
+          <div class="field">
+            <label>Products Selected</label>
+            <div id="order-products" style="font-size:.9rem;color:var(--slate);"></div>
+          </div>
+          <div class="field">
+            <label for="co-shipping">Shipping Method</label>
+            <select id="co-shipping" required>
+              <option value="standard" data-fee="79">Standard Delivery — 45–60 min (₱79)</option>
+              <option value="express" data-fee="149">Express Delivery — 20–30 min (₱149)</option>
+              <option value="pickup" data-fee="0">Store Pickup — Makati Branch (Free)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Payment Method</label>
+            <div class="radio-group">
+              <label class="radio-item"><input type="radio" name="payment" value="card" checked> Credit / Debit Card</label>
+              <label class="radio-item"><input type="radio" name="payment" value="gcash"> GCash</label>
+              <label class="radio-item"><input type="radio" name="payment" value="cod"> Cash on Delivery</label>
+            </div>
+            <p class="hint" style="font-size:.78rem;margin-top:6px;">Design only — no real payment is processed.</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="ticket">
+        <h3 style="margin-bottom:16px;">Order Summary</h3>
+        <div id="co-summary-rows"></div>
+        <div class="ticket-row"><span>Shipping</span><span id="co-shipping-fee">₱79</span></div>
+        <div class="ticket-row total"><span>Total</span><span id="co-total">₱0</span></div>
+        <div style="padding:22px 0;display:flex;flex-direction:column;gap:12px;">
+          <button type="submit" class="btn btn-primary btn-block">Place Order</button>
+          <a href="cart.html" class="btn btn-outline btn-block">Cancel</a>
+        </div>
+        <div class="ticket__edge"></div>
+      </aside>
+    </div>
+    </form>
+  </div>
+</section>
+
+<!-- Confirmation -->
+<div id="confirm-modal" style="display:none;position:fixed;inset:0;z-index:3000;background:rgba(10,14,39,.8);align-items:center;justify-content:center;padding:20px;">
+  <div class="card text-center" style="max-width:420px;padding:44px 34px;">
+    <p style="font-size:3rem;">✅</p>
+    <h2>Order placed!</h2>
+    <p style="margin:12px 0 26px;">Thanks — your food is on its way. A confirmation has been "sent" to your email.</p>
+    <a href="index.html" class="btn btn-primary btn-block">Back to Home</a>
+  </div>
+</div>
+
+<footer class="footer" style="padding-top:40px;">
+  <div class="container">
+    <div class="footer__bottom" style="border-top:1px solid var(--ink-line);padding-top:24px;">
+      <span>© <span data-year></span> LUDOVICE Kitchen &amp; Table.</span>
+      <span><a href="about.html">About</a> · <a href="contact.html">Contact</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="data/main_professional.js"></script>
+<script src="js/checkout.js"></script>
+</body>
+</html>

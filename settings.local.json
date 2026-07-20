@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd \"C:/Users/ludov/OneDrive/Documents/WEBDEV/ecommerce/1/ludovice-shop\" && find . -maxdepth 2 -type d | sort && echo \"---FILES---\" && find . -maxdepth 1 -type f | sort)",
+      "Bash(python3 -c ' *)",
+      "Bash(node -e ' *)",
+      "PowerShell(node -v)",
+      "PowerShell(npx -v)",
+      "PowerShell(python --version)",
+      "PowerShell(powershell -ExecutionPolicy Bypass -File \"C:\\\\Users\\\\ludov\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-ludov-OneDrive-Documents-WEBDEV-ecommerce-1-ludovice-shop-img-Product-Appetizer\\\\2df8bf20-3539-4413-aea4-dafe6113d473\\\\scratchpad\\\\static-server.ps1\")",
+      "PowerShell(Get-NetTCPConnection -LocalPort 8791 -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue }; \"done\")"
+    ]
+  }
+}
